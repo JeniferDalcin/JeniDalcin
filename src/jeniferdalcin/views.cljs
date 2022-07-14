@@ -21,6 +21,7 @@
   [re-com/md-circle-icon-button
    :md-icon-name "zmdi-face"
    :src      (at)
+   :style {:hover "#FEDC72"}
    :size :smaller
    :tooltip "about"
    :on-click #(re-frame/dispatch [::events/navigate :about])])
@@ -64,6 +65,7 @@
   [re-com/md-circle-icon-button
    :md-icon-name    "zmdi-home"
    :src      (at)
+   :style {:hover "background-color-red"}
    :size :smaller
    :tooltip "home"
    :on-click #(re-frame/dispatch [::events/navigate :home])])
