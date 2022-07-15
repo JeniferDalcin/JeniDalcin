@@ -17,11 +17,15 @@
        :label (str @name)
        :level :level1])) ;; level 1 tem a ver com tamanho de fonte grau de importância
 
+(defn self-apresentation []
+  [:div.flex {:style {:padding-bottom "1em"}} 
+   [re-com/p
+    "A jeni é muito doidinha mas ama o Paulo muito muito."]])
+
 (defn link-to-about-page []
   [re-com/md-circle-icon-button
    :md-icon-name "zmdi-face"
    :src      (at)
-   :style {:hover "#FEDC72"}
    :size :smaller
    :tooltip "about"
    :on-click #(re-frame/dispatch [::events/navigate :about])])
@@ -45,6 +49,7 @@
         :style {:max-width "50vw"}}]]
     [:div.flex.center-block {:style {:align-self "center"}}
       [home-title]
+      [self-apresentation]
       [link-to-about-page]
       [link-to-daily-page]]]])
 
@@ -65,7 +70,6 @@
   [re-com/md-circle-icon-button
    :md-icon-name    "zmdi-home"
    :src      (at)
-   :style {:hover "background-color-red"}
    :size :smaller
    :tooltip "home"
    :on-click #(re-frame/dispatch [::events/navigate :home])])
@@ -88,17 +92,23 @@
 (defn daily-title []
   [re-com/title
    :src   (at)
-   :label "This is the Daily Page."
+   :label "Jornada de Aprendizado"
    :level :level1])
 
 
 (defn daily-panel []
-  [re-com/v-box
+  [re-com/h-box
    :src      (at)
-   :gap      "1em"
-   :children [[daily-title]
-              [link-to-about-page]
-              [link-to-home-page]]])
+   :children 
+   [[:div.flex {:style {:max-width "40vw"}} ;;solução temporária para div não interferir na outra div de baixo pode ser o valor 1 tb.
+      [:img                               
+       {:src "img/space.png"
+        :alt ""
+        :style {:max-width "100vw"}}]] ;;  a img que está setada com 100 da view dentro de uma div com 1 da view
+    [:div.flex
+      [daily-title]
+      [link-to-about-page]
+      [link-to-home-page]]]])
 
 (defmethod routes/panels :daily-panel [] [daily-panel])
 
