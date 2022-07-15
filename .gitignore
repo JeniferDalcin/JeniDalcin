@@ -16,6 +16,3 @@
 
 # clj-kondo cache
 /.clj-kondo/.cache
-
-# README
-README.md
