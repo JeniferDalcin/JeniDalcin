@@ -21,7 +21,11 @@
 
 (defn self-apresentation []
   [re-com/title
-    :label "A jeni é muito doidinha mas ama o Paulo muito muito."
+    :label "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, 
+    metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum 
+    tellus elit sed risus. Maecenas eget condimentum velit, 
+    sit amet feugiat lectus."
     :style {:color "gray" 
             :justify-content "center" 
             :font-size "18px" 
