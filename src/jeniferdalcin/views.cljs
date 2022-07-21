@@ -15,12 +15,18 @@
       [re-com/title
        :src   (at)
        :label (str @name)
-       :level :level1])) ;; level 1 tem a ver com tamanho de fonte grau de importância
+       :level :level1
+       :style {:justify-content "center" 
+               :letter-spacing "2px"}]))
 
 (defn self-apresentation []
-  [:div.flex {:style {:padding-bottom "1em"}} 
-   [re-com/p
-    "A jeni é muito doidinha mas ama o Paulo muito muito."]])
+  [re-com/title
+    :label "A jeni é muito doidinha mas ama o Paulo muito muito."
+    :style {:color "gray" 
+            :justify-content "center" 
+            :font-size "18px" 
+            :font-weight "300" 
+            :letter-spacing "1px"}])
 
 (defn link-to-about-page []
   [re-com/md-circle-icon-button
@@ -41,17 +47,16 @@
 (defn home-panel []
   [re-com/h-box
    :src      (at)
-   :children 
-   [[:div.flex
-      [:img
-       {:src "img/sunflower.png"
-        :alt ""
-        :style {:max-width "50vw"}}]]
-    [:div.flex.center-block {:style {:align-self "center"}}
-      [home-title]
-      [self-apresentation]
-      [link-to-about-page]
-      [link-to-daily-page]]]])
+   :children [[:div.flex.flex-col
+                [:img
+                 {:src "img/sunflower.png"
+                  :alt ""
+                  :style {:max-width "50vw" :max-height "100vw"}}]]
+              [:div.flex.flex-col {:style {:gap "12px" :padding "12px" :min-width "50vw" :align-self "center"}}
+                [home-title]
+                [self-apresentation]
+                [link-to-about-page]
+                [link-to-daily-page]]]])
 
 
 (defmethod routes/panels :home-panel [] [home-panel])
@@ -64,7 +69,8 @@
   [re-com/title
    :src   (at)
    :label "This is the About Page."
-   :level :level1])
+   :level :level1
+   :style {:justify-content "center"}])
 
 (defn link-to-home-page []
   [re-com/md-circle-icon-button
@@ -77,10 +83,11 @@
 (defn about-panel []
   [re-com/v-box
    :src      (at)
-   :gap      "1em"
-   :children [[about-title]
-              [link-to-daily-page]
-              [link-to-home-page]]])
+   :children [[:div.flex.flex-row
+                [about-title]]
+              [:div.flex.flex-row
+                [link-to-daily-page]
+                [link-to-home-page]]]])
 
 (defmethod routes/panels :about-panel [] [about-panel])
 
@@ -93,23 +100,21 @@
   [re-com/title
    :src   (at)
    :label "Jornada de Aprendizado"
-   :level :level1])
+   :level :level1
+   :style {:justify-content "center"}])
 
 
 (defn daily-panel []
-  [re-com/h-box
+  [re-com/v-box
    :src      (at)
-   :children 
-   [[:div.flex {:style {:max-width "40vw"}} ;;solução temporária para div não interferir na outra div de baixo pode ser o valor 1 tb.
-      [:img                               
-       {:src "img/space.png"
-        :alt ""
-        :style {:max-width "100vw"}}]] ;;  a img que está setada com 100 da view dentro de uma div com 1 da view
-    [:div.flex
-      [daily-title]
-      [link-to-about-page]
-      [link-to-home-page]]]])
+   :children [[:div.flex.flex-row
+                [daily-title]]      
+              [:div.flex.flex-row
+                [link-to-about-page]
+                [link-to-home-page]]]])
 
+       ;;[re-com/modal-panel
+         ;;:child "Aqui foi o começo"]
 (defmethod routes/panels :daily-panel [] [daily-panel])
 
 
